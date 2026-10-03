@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#07090e">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Lumina: Light the Path — rotate mirrors, guide the light, restore the sanctuaries.">
+<title>Lumina: Light the Path</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/screens.css">
+</head>
+<body>
+<div id="app">
+  <div id="stage">
+    <canvas id="game" aria-label="Game board"></canvas>
+    <div id="ui"></div>
+  </div>
+</div>
+<div id="rotate-prompt" aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="7" y="3.5" width="10" height="17" rx="2"/><path d="M12 17.5h.01"/>
+  </svg>
+  <p>Lumina plays best in portrait.<br>Rotate your device to continue.</p>
+</div>
+
+<script>
+  // ES modules cannot load from file:// — explain instead of showing a blank screen.
+  if (location.protocol === 'file:') {
+    document.getElementById('ui').innerHTML =
+      '<div class="boot-error"><p>Lumina needs to be served over http.<br>Run <code>python -m http.server 8765</code> in this folder, then open <code>http://localhost:8765</code>.</p></div>';
+  }
+</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

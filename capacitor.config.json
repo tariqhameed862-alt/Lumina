@@ -1,0 +1,6 @@
+{
+  "appId": "com.lumina.game",
+  "appName": "Lumina",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

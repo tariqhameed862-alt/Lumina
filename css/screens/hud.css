@@ -1,0 +1,58 @@
+/* HUD — split out of the old screens.css. */
+/* ---------- HUD ---------- */
+.hud { pointer-events: none !important; }
+.hud-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px;
+}
+.hud-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.hud-right { display: flex; align-items: center; gap: 10px; flex: none; }
+.hud .pill { pointer-events: auto; }
+.hud .pill[data-act="undo"]:disabled,
+.hud .pill[data-act="undo"].empty { opacity: 0.35; }
+.level-info { display: flex; flex-direction: column; gap: 5px; min-width: 0; transition: opacity 0.3s ease, transform 0.3s ease; }
+.level-info.swap { opacity: 0; transform: translateY(-4px); }
+.level-label { font-size: 12px; letter-spacing: 2.5px; color: var(--text-dim); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.level-moves { font-size: 9.5px; letter-spacing: 2px; color: var(--text-faint); transition: color 0.3s ease; }
+.level-moves.over { color: rgba(251, 191, 36, 0.7); }
+
+.level-card {
+  position: absolute;
+  left: 0; right: 0;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.9s var(--spring);
+}
+.level-card.show { opacity: 1; transform: none; }
+.card-chapter { font-size: 10px; letter-spacing: 4px; color: var(--gold); text-transform: uppercase; }
+.card-num { font-size: 64px; font-weight: 100; letter-spacing: 6px; color: #F8FAFC; text-shadow: 0 0 30px rgba(165, 243, 252, 0.35); }
+.card-name { font-size: 13px; letter-spacing: 6px; color: var(--text-dim); text-transform: uppercase; }
+
+.hint {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 34px;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+  transition: opacity 0.9s ease;
+}
+.hint span {
+  font-size: 13px;
+  letter-spacing: 1.6px;
+  color: #CBD5E1;
+  text-align: center;
+  animation: hintPulse 2.6s ease-in-out infinite;
+}
+.hint.gone { opacity: 0; }
+.hint.gone span { animation-play-state: paused; }
+@keyframes hintPulse { 0%, 100% { opacity: 0.35; } 50% { opacity: 0.85; } }

@@ -1,0 +1,29 @@
+/* Panels (pause, settings) — split out of the old screens.css. */
+/* ---------- Panels (pause, settings) ---------- */
+.panel {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  text-align: center;
+}
+.panel-title { margin: 10px 0 30px; font-size: 26px; font-weight: 200; letter-spacing: 8px; margin-right: -8px; text-transform: uppercase; color: #F8FAFC; }
+.stack { display: flex; flex-direction: column; gap: 12px; }
+.quick-toggles { display: flex; justify-content: center; gap: 12px; margin-top: 26px; }
+.panel-close { position: absolute; top: -6px; right: 0; }
+
+.setting-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; text-align: left; }
+.setting {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+}
+.setting-icon { width: 20px; height: 20px; color: var(--text-dim); flex: none; }
+.setting-icon svg { width: 100%; height: 100%; }
+.setting-text { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+.setting-text b { font-size: 13px; font-weight: 500; letter-spacing: 1.5px; color: #F1F5F9; }
+.setting-text small { font-size: 11px; color: var(--text-faint); letter-spacing: 0.3px; }

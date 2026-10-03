@@ -1,0 +1,100 @@
+/* Level select — split out of the old screens.css. */
+/* ---------- Level select ---------- */
+.levels { display: flex; flex-direction: column; padding: 18px 20px 0; }
+.screen-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.head-title { text-align: center; }
+.head-title h2 { font-size: 13px; font-weight: 500; letter-spacing: 5px; text-transform: uppercase; color: #F1F5F9; }
+.head-title p { margin-top: 6px; font-size: 11px; letter-spacing: 2px; color: var(--text-dim); }
+
+.chapter-tabs { display: flex; gap: 8px; margin: 22px auto 0; width: 100%; max-width: 520px; }
+.chapter-tab {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 8px 10px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.35s var(--spring);
+}
+.chapter-tab:active { transform: scale(0.96); }
+.chapter-tab.on { border-color: rgba(251, 191, 36, 0.45); background: rgba(251, 191, 36, 0.07); box-shadow: 0 0 18px rgba(251, 191, 36, 0.1); }
+.tab-num { font-size: 10px; letter-spacing: 1.5px; color: var(--gold); }
+.tab-name { font-size: 11px; letter-spacing: 1.6px; text-transform: uppercase; color: #E2E8F0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+.tab-stars { font-size: 10px; letter-spacing: 1px; color: var(--text-faint); height: 13px; }
+.tab-stars svg { width: 12px; height: 12px; }
+.chapter-tab.locked .tab-name, .chapter-tab.locked .tab-num { color: var(--text-faint); }
+
+.chapter-intro { text-align: center; margin: 22px 0 4px; }
+.intro-title { display: block; font-size: 22px; font-weight: 200; letter-spacing: 6px; color: #F8FAFC; text-transform: uppercase; }
+.intro-sub { display: block; margin-top: 6px; font-size: 11px; letter-spacing: 2.4px; color: var(--text-faint); text-transform: uppercase; }
+
+.level-scroll {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
+  padding: 18px 0 32px;
+  margin: 0 -20px;
+  scrollbar-width: none;
+}
+.level-scroll::-webkit-scrollbar { display: none; }
+.level-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.level-tile {
+  position: relative;
+  aspect-ratio: 0.82;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015));
+  transition: transform 0.4s var(--spring), border-color 0.3s ease, background 0.3s ease;
+}
+.level-tile:active { transform: scale(0.93); transition-duration: 0.08s; }
+.level-tile:hover { border-color: rgba(255, 255, 255, 0.22); }
+.tile-num { font-size: 24px; font-weight: 200; letter-spacing: 1px; color: #F8FAFC; font-variant-numeric: tabular-nums; }
+.tile-num.dim { font-size: 13px; color: var(--text-faint); }
+.tile-name { font-size: 8.5px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-dim); max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding: 0 4px; }
+.tile-stars { display: flex; gap: 2px; margin-top: 3px; }
+.tile-stars i { width: 11px; height: 11px; color: rgba(148, 163, 184, 0.25); }
+.tile-stars i.on { color: var(--gold); filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.6)); }
+.tile-stars svg { width: 100%; height: 100%; }
+.tile-lock { width: 18px; height: 18px; color: var(--text-faint); }
+.tile-lock svg { width: 100%; height: 100%; }
+.tile-badge {
+  position: absolute;
+  top: -7px;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 7.5px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #0B1220;
+  background: #A5F3FC;
+}
+.level-tile.done { border-color: rgba(251, 191, 36, 0.22); }
+.level-tile.next {
+  border-color: rgba(103, 232, 249, 0.6);
+  background: linear-gradient(180deg, rgba(34, 211, 238, 0.16), rgba(34, 211, 238, 0.03));
+  animation: glowPulse 2.8s ease-in-out infinite;
+}
+.level-tile.locked { background: rgba(255, 255, 255, 0.015); border-style: dashed; border-color: rgba(255, 255, 255, 0.07); }
+.level-tile.shake { animation: shake 0.4s ease; }
+@keyframes shake {
+  20%, 60% { transform: translateX(-4px); }
+  40%, 80% { transform: translateX(4px); }
+}

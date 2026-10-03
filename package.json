@@ -1,12 +1,18 @@
 {
   "name": "lumina-light-the-path",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "description": "Lumina: Light the Path — a minimalist light-reflection puzzle game (HTML5 Canvas, vanilla JS).",
   "scripts": {
     "start": "python -m http.server 8765",
+    "build": "node tools/build.mjs",
     "levels": "node tools/generate-levels.mjs",
     "verify": "node tools/verify-levels.mjs"
+  },
+  "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2"
   }
 }

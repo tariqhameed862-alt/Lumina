@@ -1,0 +1,116 @@
+/* Iri — the speech bubble, her flame face and the little personality touches on other screens. */
+
+.iri {
+  position: absolute;
+  left: 50%;
+  bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  z-index: 9;                       /* above every overlay (z 5) */
+  width: min(92%, 360px);
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  transform: translate(-50%, 24px) scale(0.9);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.55s var(--spring), visibility 0s linear 0.3s;
+}
+.iri.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0) scale(1);
+  transition: opacity 0.25s ease, transform 0.55s var(--spring);
+}
+
+.iri-avatar {
+  flex: none;
+  width: 52px; height: 60px;
+  pointer-events: auto;             /* tap her to poke her */
+  cursor: pointer;
+  filter: drop-shadow(0 0 14px rgba(251, 191, 36, 0.55));
+  animation: iriBob 2.4s ease-in-out infinite;
+  transform-origin: 50% 90%;
+}
+.iri-flame { width: 100%; height: 100%; overflow: visible; }
+.iri-flame .body { transform-origin: 50% 90%; animation: iriFlicker 0.9s ease-in-out infinite alternate; }
+.iri-flame .lids { opacity: 0; animation: iriBlink 4.6s infinite; }
+.iri-flame .mouth { display: none; }
+.iri-flame .blush { opacity: 0; }
+
+.iri-card {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 14px 12px;
+  border-radius: 16px 16px 16px 4px;
+  background: rgba(15, 20, 32, 0.9);
+  border: 1px solid rgba(251, 191, 36, 0.38);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.5), 0 0 22px rgba(251, 191, 36, 0.12);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+.iri-name {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--gold);
+}
+.iri-text { font-size: 13.5px; line-height: 1.45; color: #F1F5F9; min-height: 1.45em; }
+
+/* moods → face */
+.iri.mood-happy .m-happy,
+.iri.mood-panic .m-panic,
+.iri.mood-sad .m-sad,
+.iri.mood-smug .m-smug,
+.iri.mood-proud .m-proud,
+.iri.mood-sleepy .m-sleepy { display: block; }
+.iri.mood-proud .blush, .iri.mood-happy .blush { opacity: 0.55; }
+.iri.mood-sleepy .eyes { display: none; }
+.iri.mood-sleepy .lids { opacity: 1; animation: none; }
+.iri.mood-panic .iri-avatar { animation: iriPanic 0.28s linear infinite; }
+.iri.mood-proud .iri-avatar { animation: iriHop 0.7s var(--spring) infinite alternate; }
+.iri.mood-sad .iri-flame { transform: scale(0.9) translateY(4px); }
+
+@keyframes iriBob { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-4px) rotate(2deg); } }
+@keyframes iriFlicker { from { transform: scale(1, 1) skewX(0deg); } to { transform: scale(1.05, 0.96) skewX(2deg); } }
+@keyframes iriBlink { 0%, 92%, 100% { opacity: 0; } 94%, 97% { opacity: 1; } }
+@keyframes iriPanic { 0% { transform: translateX(-1.5px); } 50% { transform: translateX(1.5px); } 100% { transform: translateX(-1.5px); } }
+@keyframes iriHop { from { transform: translateY(0); } to { transform: translateY(-9px); } }
+
+/* Victory card: Iri's verdict */
+.iri-quote {
+  margin: 16px 0 0;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px dashed rgba(251, 191, 36, 0.35);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #FDE68A;
+}
+.iri-quote::before { content: 'IRI · '; font-style: normal; font-weight: 700; font-size: 9px; letter-spacing: 2.5px; color: var(--gold); }
+
+/* Menu: rotating tagline */
+.brand-quip {
+  margin-top: 10px;
+  font-size: 11.5px;
+  font-style: italic;
+  letter-spacing: 0.4px;
+  color: rgba(253, 230, 138, 0.7);
+  text-shadow: 0 1px 8px rgba(5, 7, 11, 0.9);
+  min-height: 1.4em;
+}
+.brand-mark { pointer-events: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  .iri-avatar, .iri-flame .body, .iri-flame .lids, .iri.mood-panic .iri-avatar, .iri.mood-proud .iri-avatar { animation: none !important; }
+}
+
+/* Wide screens: Iri lives in the bottom-left corner instead of the centre, so she never covers the menu card or the board. */
+@media (min-width: 880px) {
+  .iri { left: 28px; bottom: calc(72px + env(safe-area-inset-bottom, 0px)); width: 360px; transform: translate(-14px, 18px) scale(0.92); }
+  .iri.show { transform: none; }
+}

@@ -1,0 +1,34 @@
+/* Rotate-to-portrait prompt — split out of the old screens.css. */
+/* ---------- Rotate-to-portrait prompt (no native shell yet to lock orientation) ---------- */
+#rotate-prompt {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  text-align: center;
+  padding: 32px;
+  background: var(--bg);
+  color: var(--text-dim);
+  font: 13px/1.6 var(--font);
+  letter-spacing: 0.6px;
+}
+#rotate-prompt svg { width: 40px; height: 40px; color: var(--cyan); animation: markFloat 2.4s ease-in-out infinite; }
+@media (orientation: landscape) and (max-height: 500px) {
+  #rotate-prompt { display: flex; }
+}
+
+@media (max-height: 640px) {
+  .brand { margin-bottom: 28px; }
+  .brand-title { font-size: 36px; }
+  .stars-row { margin-top: 16px; }
+  .victory .chips { margin: 16px 0 20px; }
+}
+@media (max-width: 360px) {
+  .level-label { font-size: 11px; letter-spacing: 2px; }
+  .level-grid { gap: 9px; }
+  .chip { min-width: 96px; }
+}

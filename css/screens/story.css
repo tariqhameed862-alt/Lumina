@@ -1,0 +1,19 @@
+/* Story (chapter intros/outros) — split out of the old screens.css. */
+/* ---------- Story (chapter intros/outros) ---------- */
+.story .story-panel { max-width: 380px; }
+.story-speaker { letter-spacing: 4px; }
+.story-text {
+  margin-top: 18px;
+  min-height: 96px;
+  font-size: 15px;
+  line-height: 1.65;
+  font-weight: 300;
+  color: #F1F5F9;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.35s ease, transform 0.4s ease;
+}
+.story-text.in { opacity: 1; transform: none; }
+.story-dots { display: flex; justify-content: center; gap: 7px; margin: 22px 0 26px; }
+.story-dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(255, 255, 255, 0.18); transition: background 0.3s ease, transform 0.3s ease; }
+.story-dots i.on { background: var(--cyan); transform: scale(1.5); box-shadow: 0 0 8px rgba(34, 211, 238, 0.7); }
